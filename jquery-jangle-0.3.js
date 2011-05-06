@@ -56,10 +56,12 @@
         this
           .css(styleTransform, 'rotate(' + angle + 'deg)');
 
-        // jQuery issue with -ms- prefix - http://bugs.jquery.com/ticket/8346
-        if (prefixes[i] === '-ms-') {
-          $(this).css({msTransform: 'rotate(' + angle + 'deg)'});
-        }
+        /* issue fixed in jQuery 1.6 - will remove completely after further testing
+            // jQuery issue with -ms- prefix - http://bugs.jquery.com/ticket/8346
+            if (prefixes[i] === '-ms-') {
+              $(this).css({msTransform: 'rotate(' + angle + 'deg)'});
+            }
+        */
       }
     } else { // doesn't support CSS transforms - use IE filters
       this.each(function() {
