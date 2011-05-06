@@ -68,7 +68,7 @@
       });
     }
 
-    // don't be the winkest link (preserve chainability)
+    // don't be the weakest link (preserve chainability)
     return this;
   };
 })(jQuery);

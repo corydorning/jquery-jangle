@@ -1,1 +1,57 @@
-This file was created by JetBrains WebStorm 2.0.1 for binding GitHub repository
+/* jangle README
+ *
+ * Last modified by: Cory Dorning
+ * Last modified on: 05/06/11
+ *
+ * jAngle is a jQuery plugin that uses CSS3 (or appropriate
+ * MS filters) to rotate an element using the passed angle
+ * parameter.
+ *
+ */
+
+ To use jangle, you must be using jQuery version 1.6+. Reference
+ the jQuery library followed the jangle JavaScript file:
+
+  <!-- load jQuery library -->
+  <script src="/common/js/libs/jquery-1.5.2.min.js"></script>
+
+  <!-- load jangle plugin -->
+  <script src="jquery-jangle-0.3.js"></script>
+
+
+Now you are ready to use jangle! Below is some example code on the ways
+you can use it.
+
+
+Page Load
+------------------
+
+<!-- rotate a DIV 90 degrees -->
+<script>
+  $('div').jangle(90);
+</script>
+
+
+Click Event
+------------------
+
+<!-- rotate a DIV 90 degrees upon clicking a link -->
+<script>
+  $('a').click(function() {
+    $('div').jangle(90);
+  });
+</script>
+
+
+Form Driven
+------------------
+
+<!-- see jangle-example.html for full code sample -->
+<!-- rotate an image based on input value -->
+<script>
+  $('button').click(function() {
+    var angle = parseInt($('input[type=text]').val()) || 0;
+
+    $('img').jangle(angle);
+  });
+</script>
