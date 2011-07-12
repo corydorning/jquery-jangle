@@ -12,7 +12,7 @@
 (function($) {
   $.fn.jangle = function(a) {
         // set default if one isn't passed in
-    var angle = a == parseInt(a) ? a % 360 : 180,
+    var angle = a == parseInt(a, 10) ? a % 360 : 180,
 
         // crazy math algorithm voodoo - see http://msdn.microsoft.com/en-us/library/ms533014%28VS.85%29.aspx
         // and http://www.boogdesign.com/b2evo/index.php/element-rotation-ie-matrix-filter?blog=2
