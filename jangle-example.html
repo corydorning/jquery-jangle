@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
 
@@ -9,44 +8,146 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>jangle Plug-in Demo</title>
-  
   <meta name="description" content="jangle is a jQuery plugin that converts an image to a canvas element and allows you to rotate the canvas.">
   <meta name="author" content="Cory Dorning">
 
-  <!--  Mobile viewport optimized -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+
+  <style>
+    .clb {
+      clear: both;
+    }
+    .variation {
+      float: left;
+      width: 50%;
+    }
+    .slider {
+      width: 300px;
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="container">
-    
-    <h1>jAngle - Full</h1>
-    
-    <img src="jquery-logo.png" alt="jQuery Logo">
+    <p>A demo showcasing the jQuery plugin, jangle. Be sure to check out the <a href="http://corydorning.com/projects/jangle">jangle project page</a> or just <a href="https://github.com/corydorning/jangle">grab the source code</a>.</p>
 
-    <p>
-      Enter an angle:
-      <input type="text" />
-      <button>Rotate!</button>
+    <div id="input" class="variation">
+      <h2>Form Input</h2>
+
+      <p>Enter an angle (-360 to 360): <input type="text" style="width: 100px;" /></p>
+      <button style="padding: 3px;">Rotate!</button></p>
+    </div><!-- #input -->
+
+    <div id="continuous" class="variation">
+      <h2>Continuous</h2>
+
+      <p>Enter an angle (-360 to 360): <input type="text" style="width: 100px;" /></p>
+      <button style="padding: 3px;">Rotate!</button></p>
+    </div><!-- #input -->
+
+    <div id="animate" class="variation">
+      <h2>Animated</h2>
+
+      <p>Enter an angle (-360 to 360): <input type="text" style="width: 100px;" /></p>
+      <p>Enter a duration (in m/s): <input type="text" style="width: 100px;" /> <small>Ex. 1000 = 1 second</small></p>
+      <p>Enter an interval (in m/s): <input type="text" style="width: 100px;" /> <small>Default: 100</small></p>
+      <button style="padding: 3px;">Rotate!</button>
+    </div><!-- #animate -->
+
+
+    <div id="slider" class="variation">
+      <h2>Slider</h2>
+
+      <p>Drag the slider to rotate the image.</p>
+      <p class="slider"></p>
+      <p style="font-size: 11px;">Special thanks to fellow co-worker, <strong>Jason Bachman</strong>, for the idea and initial work on the slider.</p>
+
+    </div><!-- #slider -->
+
+    <br class="clb" />
+
+    <p style="height:65px; width: 260px; margin: 100px auto;">
+      <img src="http://corydorning.com/wp-content/uploads/2011/05/jquery-logo.png" alt="jQuery. write less. do more." width="259" height="65" id="jangle-image" />
     </p>
-    
   </div><!-- .container -->
 
 
   <!-- Javascript at the bottom for faster page loading -->
-  <!-- load jQuery library -->
-  <script src="jquery-1.6.min.js"></script>
+  <!-- load jQuery script -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
 
   <!-- load jangle plugin -->
-  <script src="jquery-jangle-0.3.js"></script>
+  <script src="jquery.jangle.js"></script>
 
-  <!-- init jangle -->
+  <!-- demo scripts -->
   <script>
-    $('button').click(function() {
-      var angle = parseInt($('input[type=text]').val()) || 0;
+    var $input = $('#input'),
+        $continuous = $('#continuous'),
+        $animate = $('#animate'),
+        $slider = $('#slider'),
+        $img = $('#jangle-image'),
+        enterKey = function(e) {
+          var code = (e.keyCode ? e.keyCode : e.which);
 
-      $('img').jangle(angle);
+          if (code == 13) { // enter keycode
+            $(this).parent().next('button').trigger('click');
+          }
+        };
+
+    // input version
+    $input
+      .find('button')
+        .click(function() {
+          var $params = $input.find('input');
+          
+          $img.jangle($params.val());
+        })
+        .end()
+      .find('input')
+        .keypress(enterKey);
+
+    $continuous
+      .find('button')
+        .click(function() {
+          var $params = $continuous.find('input');
+          
+          $img.jangle({
+            continuous: true,
+            degrees: $params.val(),
+          });
+        })
+        .end()
+      .find('input')
+        .keypress(enterKey);
+
+    // animated version
+    $animate
+      .find('button')
+        .click(function() {
+          var $params = $animate.find('input');
+          
+          $img.jangle({
+            degrees: $params.eq(0).val(),
+            duration: $params.eq(1).val(),
+            interval: $params.eq(2).val()
+          });
+        })
+        .end()
+      .find('input')
+        .keypress(enterKey);
+
+    // slider version
+    $('.slider', $slider).slider({
+        min: 0, // degrees
+        max: 360, // degrees
+        slide: function(e, ui) {
+          $img.jangle(ui.value);
+        },
+        stop: function(e, ui) { // in case you out slide the slider
+          $img.jangle(ui.value);
+      }
     });
   </script>
 </body>

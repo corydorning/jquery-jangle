@@ -9,14 +9,18 @@
  *
  */
 
- To use jangle, you must be using jQuery version 1.6+. Reference
- the jQuery library followed the jangle JavaScript file:
+ Requirements
+------------------
+
+ To use jangle, it is recommended you use the latest version
+ of jQuery 1.6. Reference the jQuery library followed the
+ jangle JavaScript file:
 
   <!-- load jQuery library -->
-  <script src="/common/js/libs/jquery-1.5.2.min.js"></script>
+  <script src="/common/js/libs/jquery-1.6.min.js"></script>
 
   <!-- load jangle plugin -->
-  <script src="jquery-jangle-0.3.js"></script>
+  <script src="jquery-jangle-0.5.js"></script>
 
 
 Now you are ready to use jangle! Below is some example code on the ways
