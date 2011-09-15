@@ -1,4 +1,3 @@
-
 /* jquery-jangle-0.5.js
  *
  * Last modified by: Cory Dorning
