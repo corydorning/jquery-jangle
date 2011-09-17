@@ -1,5 +1,7 @@
 /* jquery-jangle-0.5.js
  *
+ * URL: http://corydorning.com/projects/jangle
+ *
  * Last modified by: Cory Dorning
  * Last modified on: 08/16/2011
  *
@@ -8,21 +10,17 @@
  *
  * continuous:  determines if an element is rotated from its
  *              current position or its starting position
-
+ *
  * degrees:     is the angle you want to rotate the element
-
+ *
  * duration:    is how long you want the rotation to take
-
+ *
  * interval:    is how often the element is updated during the
  *              specified duration (smoothness of the animation)
  *
  * @TODO
  * =nan-issue:
  *  NaN returns true, need to replace || with tertiary condition
- *
- * =requestAnimation:
- *  Create a polyfill for requestAnimationFrame and use instead of
- *  setInterval when/where possible
  *
  */
 
