@@ -24,7 +24,7 @@
  *
  */
 
-(function($) {
+;(function($) {
   $.jangleUpdate = function($el, deg) {
     var currPos = $el.data('jangle') || 0,
         newPos = currPos + deg
