@@ -39,7 +39,7 @@
     var props = ['transformProperty', 'WebkitTransform', 'MozTransform', 'OTransform', 'msTransform'],
 
         // element to test
-        elStyle = this[0].style;
+        elStyle = this[0] ? this[0].style : {};
 
     // test for CSS transform support
     for ( var i in props ) {
