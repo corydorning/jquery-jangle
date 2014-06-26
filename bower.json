@@ -1,0 +1,22 @@
+{
+  "name": "jquery-jangle",
+  "main": "jquery-jangle.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/corydorning/jquery-jangle",
+  "authors": [
+    "Cory Dorning <cory@dorning.me>"
+  ],
+  "description": "jAngle is a jQuery plugin that uses CSS3 (or appropriate IE filters) to rotate an element using the passed parameters.",
+  "keywords": [
+    "jquery",
+    "jangle"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
